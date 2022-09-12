@@ -49,87 +49,98 @@ int base( int l ) {
 
 void main() {
 
+    /* simplified entry (representation )
+    INT 0 6
+    LIT 0 1
+    LIT 0 2
+    LIT 0 3
+    LIT 0 4
+    LIT 0 5
+    LIT 0 6
+    LIT 0 7
+    LIT 0 8
+    LIT 0 9
+    LIT 0 10
+    OPR 0 2
+    OPR 0 2
+    OPR 0 2
+    OPR 0 2
+    OPR 0 2
+    OPR 0 2
+    OPR 0 2
+    OPR 0 2
+    OPR 0 2
+    OPR 0 0
+    */
+
     int index = 0;
     // Iniciando
     code[index].f = INT;
     code[index].l = 0;
     code[index].a = 6; index++;
-    // Contador
-    code[index].f = LIT;
-    code[index].l = 0;
-    code[index].a = 2; index++;
-    // Movendo contador e salvando
-    code[index].f = STO;
-    code[index].l = 0;
-    code[index].a = 3; index++;
-    // Máximo
-    code[index].f = LIT;
-    code[index].l = 0;
-    code[index].a = 100; index++;
-    // Movendo e salvando máximo
-    code[index].f = STO;
-    code[index].l = 0;
-    code[index].a = 4; index++;
-    // Inicio soma
+    // Inserindo literais
     code[index].f = LIT;
     code[index].l = 0;
     code[index].a = 1; index++;
-    // Movendo e salvando soma inicial
-    code[index].f = STO;
-    code[index].l = 0;
-    code[index].a = 5; index++;
-    // Carregando aux
-    code[index].f = LOD;
-    code[index].l = 0;
-    code[index].a = 3; index++;
-    // Corregando soma
-    code[index].f = LOD;
-    code[index].l = 0;
-    code[index].a = 5; index++;
-    // Operando soma aux + somatorio
-    code[index].f = OPR;
+    code[index].f = LIT;
     code[index].l = 0;
     code[index].a = 2; index++;
-    // Salvando resultado a operacao anterior
-    code[index].f = STO;
-    code[index].l = 0;
-    code[index].a = 5; index++;
-    // Carregando aux
-    code[index].f = LOD;
+    code[index].f = LIT;
     code[index].l = 0;
     code[index].a = 3; index++;
-    // Carregando maximo
-    code[index].f = LOD;
+    code[index].f = LIT;
     code[index].l = 0;
     code[index].a = 4; index++;
-    // Operando menor que
-    code[index].f = OPR;
+    code[index].f = LIT;
+    code[index].l = 0;
+    code[index].a = 5; index++;
+    code[index].f = LIT;
+    code[index].l = 0;
+    code[index].a = 6; index++;
+    code[index].f = LIT;
+    code[index].l = 0;
+    code[index].a = 7; index++;
+    code[index].f = LIT;
+    code[index].l = 0;
+    code[index].a = 8; index++;
+    code[index].f = LIT;
+    code[index].l = 0;
+    code[index].a = 9; index++;
+    code[index].f = LIT;
     code[index].l = 0;
     code[index].a = 10; index++;
-    // Pulo condicional e verificacao para saido do loop
-    code[index].f = JPC;
-    code[index].l = 0;
-    code[index].a = 19; index++;
-    // Carregando aux
-    code[index].f = LOD;
-    code[index].l = 0;
-    code[index].a = 3; index++;
-    // Operando soma
+    // Operacoes de soma
     code[index].f = OPR;
     code[index].l = 0;
     code[index].a = 2; index++;
-    // Salvando aux
-    code[index].f = STO;
+    code[index].f = OPR;
     code[index].l = 0;
-    code[index].a = 3; index++;
-    // Pulo para realizar o loop novamente
-    code[index].f = JMP;
+    code[index].a = 2; index++;
+    code[index].f = OPR;
     code[index].l = 0;
-    code[index].a = 7; index++;
-    // Terminar programa
+    code[index].a = 2; index++;
+    code[index].f = OPR;
+    code[index].l = 0;
+    code[index].a = 2; index++;
+    code[index].f = OPR;
+    code[index].l = 0;
+    code[index].a = 2; index++;
+    code[index].f = OPR;
+    code[index].l = 0;
+    code[index].a = 2; index++;
+    code[index].f = OPR;
+    code[index].l = 0;
+    code[index].a = 2; index++;
+    code[index].f = OPR;
+    code[index].l = 0;
+    code[index].a = 2; index++;
+    code[index].f = OPR;
+    code[index].l = 0;
+    code[index].a = 2; index++;
     code[index].f = OPR;
     code[index].l = 0;
     code[index].a = 0; index++;
+
 
     instruction i;
     {

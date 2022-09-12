@@ -49,31 +49,96 @@ int base( int l ) {
 
 void main() {
 
-    // Iniciando
+      /* simplified entry( representation )
+    INT 0 6
+    LIT 0 2
+    STO 0 3
+    LIT 0 100
+    STO 0 4
+    LIT 0 1
+    STO 0 5
+    LOD 0 3
+    LOD 0 5
+    OPR 0 2
+    STO 0 5
+    LOD 0 3
+    LOD 0 4
+    OPR 0 9
+    JPC 0 21
+    LOD 0 3
+    OPR 0 2
+    STO 0 3
+    JMP 0 7
+    OPR 0 0
+    */
     int index = 0;
+
     code[index].f = INT;
     code[index].l = 0;
     code[index].a = 6; index++;
-    // Inserindo o litaral '11'.
     code[index].f = LIT;
     code[index].l = 0;
-    code[index].a = 11; index++;
-    // Movendo literal '64'.
+    code[index].a = 2; index++;
+    code[index].f = STO;
+    code[index].l = 0;
+    code[index].a = 3; index++;
+    code[index].f = LIT;
+    code[index].l = 0;
+    code[index].a = 100; index++;
+    code[index].f = STO;
+    code[index].l = 0;
+    code[index].a = 4; index++;
+    code[index].f = LIT;
+    code[index].l = 0;
+    code[index].a = 1; index++;
     code[index].f = STO;
     code[index].l = 0;
     code[index].a = 5; index++;
-    // Inserindo o literal '2'.
-    code[index].f = LIT;
+    code[index].f = LOD;
     code[index].l = 0;
-    code[index].a = 2; index++;
-    // Operando soma
+    code[index].a = 3; index++;
+    code[index].f = LOD;
+    code[index].l = 0;
+    code[index].a = 3; index++;
+    code[index].f = OPR;
+    code[index].l = 0;
+    code[index].a = 4; index++;
+    code[index].f = LOD;
+    code[index].l = 0;
+    code[index].a = 5; index++;
     code[index].f = OPR;
     code[index].l = 0;
     code[index].a = 2; index++;
-    // Finalizando execução
+    code[index].f = STO;
+    code[index].l = 0;
+    code[index].a = 5; index++;
+    code[index].f = LOD;
+    code[index].l = 0;
+    code[index].a = 3; index++;
+    code[index].f = LOD;
+    code[index].l = 0;
+    code[index].a = 4; index++;
     code[index].f = OPR;
     code[index].l = 0;
-    code[index].a = 0; index++;
+    code[index].a = 9; index++;
+    code[index].f = JPC;
+    code[index].l = 0;
+    code[index].a = 21; index++;
+    code[index].f = LOD;
+    code[index].l = 0;
+    code[index].a = 3; index++;
+    code[index].f = OPR;
+    code[index].l = 0;
+    code[index].a = 2; index++;
+    code[index].f = STO;
+    code[index].l = 0;
+    code[index].a = 3; index++;
+    code[index].f = JMP;
+    code[index].l = 0;
+    code[index].a = 7; index++;
+    code[index].f = OPR;
+    code[index].l = 0;
+    code[index].a = 0;
 
     instruction i;
     {

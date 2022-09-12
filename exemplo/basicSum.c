@@ -49,74 +49,40 @@ int base( int l ) {
 
 void main() {
 
-    int index = 0;
+    /* simplified entry( representation )
+    INT 0 6
+    LIT 0 11
+    STO 0 5
+    LIT 0 2
+    OPR 0 2
+    OPR 0 0
+    */
+
     // Iniciando
+    int index = 0;
     code[index].f = INT;
     code[index].l = 0;
     code[index].a = 6; index++;
-    // Inserindo literais
+    // Inserindo o litaral '11'.
     code[index].f = LIT;
     code[index].l = 0;
-    code[index].a = 1; index++;
-    code[index].f = LIT;
-    code[index].l = 0;
-    code[index].a = 2; index++;
-    code[index].f = LIT;
-    code[index].l = 0;
-    code[index].a = 3; index++;
-    code[index].f = LIT;
-    code[index].l = 0;
-    code[index].a = 4; index++;
-    code[index].f = LIT;
+    code[index].a = 11; index++;
+    // Movendo literal '64'.
+    code[index].f = STO;
     code[index].l = 0;
     code[index].a = 5; index++;
+    // Inserindo o literal '2'.
     code[index].f = LIT;
     code[index].l = 0;
-    code[index].a = 6; index++;
-    code[index].f = LIT;
-    code[index].l = 0;
-    code[index].a = 7; index++;
-    code[index].f = LIT;
-    code[index].l = 0;
-    code[index].a = 8; index++;
-    code[index].f = LIT;
-    code[index].l = 0;
-    code[index].a = 9; index++;
-    code[index].f = LIT;
-    code[index].l = 0;
-    code[index].a = 10; index++;
-    // Operacoes de soma
+    code[index].a = 2; index++;
+    // Operando soma
     code[index].f = OPR;
     code[index].l = 0;
     code[index].a = 2; index++;
-    code[index].f = OPR;
-    code[index].l = 0;
-    code[index].a = 2; index++;
-    code[index].f = OPR;
-    code[index].l = 0;
-    code[index].a = 2; index++;
-    code[index].f = OPR;
-    code[index].l = 0;
-    code[index].a = 2; index++;
-    code[index].f = OPR;
-    code[index].l = 0;
-    code[index].a = 2; index++;
-    code[index].f = OPR;
-    code[index].l = 0;
-    code[index].a = 2; index++;
-    code[index].f = OPR;
-    code[index].l = 0;
-    code[index].a = 2; index++;
-    code[index].f = OPR;
-    code[index].l = 0;
-    code[index].a = 2; index++;
-    code[index].f = OPR;
-    code[index].l = 0;
-    code[index].a = 2; index++;
+    // Finalizando execução
     code[index].f = OPR;
     code[index].l = 0;
     code[index].a = 0; index++;
-
 
     instruction i;
     {

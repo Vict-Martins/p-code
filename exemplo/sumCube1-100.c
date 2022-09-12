@@ -48,30 +48,107 @@ int base( int l ) {
 }
 
 void main() {
+
+    /* simplified entry( representation )
+    INT 0 6
+    LIT 0 2
+    STO 0 3
+    LIT 0 100
+    STO 0 4
+    LIT 0 1
+    STO 0 5
+    LOD 0 3
+    LOD 0 3
+    LOD 0 3
+    OPR 0 4
+    OPR 0 4
+    LOD 0 5
+    OPR 0 2
+    STO 0 5
+    LOD 0 3
+    LOD 0 4
+    OPR 0 9
+    JPC 0 23
+    LOD 0 3
+    OPR 0 2
+    STO 0 3
+    JMP 0 7
+    OPR 0 0
+    */
     int index = 0;
 
-    code[index].f = INT; code[index].l = 0; code[index].a = 6; index++;			// Inicia memoria
-    code[index].f = LIT; code[index].l = 0; code[index].a = 2; index++;			// Inicia contador
-    code[index].f = STO; code[index].l = 0; code[index].a = 3; index++;			// Salva contador
-    code[index].f = LIT; code[index].l = 0; code[index].a = 100; index++;			// Configura máximo
-    code[index].f = STO; code[index].l = 0; code[index].a = 4; index++;			// Salva max
-    code[index].f = LIT; code[index].l = 0; code[index].a = 1; index++;			// Inicia Soma inicial = 1
-    code[index].f = STO; code[index].l = 0; code[index].a = 5; index++;			// Salva Soma inicial
-    code[index].f = LOD; code[index].l = 0; code[index].a = 3; index++;			// Inicio do loop (load aux)
-    code[index].f = LOD; code[index].l = 0; code[index].a = 3; index++;			// Prepara quadrado (load aux)
-    code[index].f = OPR; code[index].l = 0; code[index].a = 4; index++;			// Aux*Aux
-    code[index].f = LOD; code[index].l = 0; code[index].a = 5; index++;			// Load Soma
-    code[index].f = OPR; code[index].l = 0; code[index].a = 2; index++;			// Soma + Aux
-    code[index].f = STO; code[index].l = 0; code[index].a = 5; index++;			// Salva a Soma
-    code[index].f = LOD; code[index].l = 0; code[index].a = 3; index++;			// Load aux
-    code[index].f = LOD; code[index].l = 0; code[index].a = 4; index++;			// Load Máximo
-    code[index].f = OPR; code[index].l = 0; code[index].a = 9; index++;		// Menor que
-    code[index].f = JPC; code[index].l = 0; code[index].a = 21; index++;		// Saida do loop
-    code[index].f = LOD; code[index].l = 0; code[index].a = 3; index++;			// Load aux
-    code[index].f = OPR; code[index].l = 0; code[index].a = 2; index++;			// Aux + 1
-    code[index].f = STO; code[index].l = 0; code[index].a = 3; index++;			// Salva aux
-    code[index].f = JMP; code[index].l = 0; code[index].a = 7; index++;			// Fim do loop
-    code[index].f = OPR; code[index].l = 0; code[index].a = 0;				// Fim do programa
+    code[index].f = INT;
+    code[index].l = 0;
+    code[index].a = 6; index++;
+    code[index].f = LIT;
+    code[index].l = 0;
+    code[index].a = 2; index++;
+    code[index].f = STO;
+    code[index].l = 0;
+    code[index].a = 3; index++;
+    code[index].f = LIT;
+    code[index].l = 0;
+    code[index].a = 100; index++;
+    code[index].f = STO;
+    code[index].l = 0;
+    code[index].a = 4; index++;
+    code[index].f = LIT;
+    code[index].l = 0;
+    code[index].a = 1; index++;
+    code[index].f = STO;
+    code[index].l = 0;
+    code[index].a = 5; index++;
+    code[index].f = LOD;
+    code[index].l = 0;
+    code[index].a = 3; index++;
+    code[index].f = LOD;
+    code[index].l = 0;
+    code[index].a = 3; index++;
+    code[index].f = LOD;
+    code[index].l = 0;
+    code[index].a = 3; index++;
+    code[index].f = OPR;
+    code[index].l = 0;
+    code[index].a = 4; index++;
+    code[index].f = OPR;
+    code[index].l = 0;
+    code[index].a = 4; index++;
+    code[index].f = LOD;
+    code[index].l = 0;
+    code[index].a = 5; index++;
+    code[index].f = OPR;
+    code[index].l = 0;
+    code[index].a = 2; index++;
+    code[index].f = STO;
+    code[index].l = 0;
+    code[index].a = 5; index++;
+    code[index].f = LOD;
+    code[index].l = 0;
+    code[index].a = 3; index++;
+    code[index].f = LOD;
+    code[index].l = 0;
+    code[index].a = 4; index++;
+    code[index].f = OPR;
+    code[index].l = 0;
+    code[index].a = 9; index++;
+    code[index].f = JPC;
+    code[index].l = 0;
+    code[index].a = 23; index++;
+    code[index].f = LOD;
+    code[index].l = 0;
+    code[index].a = 3; index++;
+    code[index].f = OPR;
+    code[index].l = 0;
+    code[index].a = 2; index++;
+    code[index].f = STO;
+    code[index].l = 0;
+    code[index].a = 3; index++;
+    code[index].f = JMP;
+    code[index].l = 0;
+    code[index].a = 7; index++;
+    code[index].f = OPR;
+    code[index].l = 0;
+    code[index].a = 0;
 
     instruction i;
     {
