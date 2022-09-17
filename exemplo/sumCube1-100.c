@@ -50,29 +50,33 @@ int base( int l ) {
 int main() {
 
     /* simplified entry( representation )
-    INT 0 6
-    LIT 0 2
-    STO 0 3
-    LIT 0 100
-    STO 0 4
-    LIT 0 1
-    STO 0 5
-    LOD 0 3
-    LOD 0 5
-    OPR 0 2
-    STO 0 5
-    LOD 0 3
-    LOD 0 4
-    OPR 0 10
-    JPC 0 19
-    LOD 0 3
-    OPR 0 2
-    STO 0 3
-    JMP 0 7
-    OPR 0 0
+
+    INT 0 6 (space)
+    LIT 0 2 (contactor)
+    STO 0 3 (move contactor)
+    LIT 0 100(max interaction)
+    STO 0 4 (move max intection)
+    LIT 0 1 (inicial summation)
+    STO 0 5 (move summaton)
+    LOD 0 3 (load contactor x)
+    LOD 0 3 (load contactor x*x)
+    LOD 0 3 (load contactor x*x*x)
+    OPR 0 4 (mult)
+    OPR 0 4 (mul)
+    OPR 0 2 (sum)
+    LOD 0 3 (load contactor)
+    LOD 0 4 (load max)
+    OPR 0 10 (counter less than summation ?)
+    JPC 0 21 (Jump condition)
+    LOD 0 3 (load contactor)
+    OPR 0 2 (sum)
+    STO 0 3 (add new contactor)
+    JMP 0 7 (jump line seven)
+    OPR 0 0 (return 0 - fim)
+
     */
 
-    int index = 0;
+        int index = 0;
         code[index].f = INT; code[index].l = 0; code[index].a = 6; index++;
         code[index].f = LIT; code[index].l = 0; code[index].a = 2; index++;
         code[index].f = STO; code[index].l = 0; code[index].a = 3; index++;
@@ -95,6 +99,7 @@ int main() {
         code[index].f = STO; code[index].l = 0; code[index].a = 3; index++;
         code[index].f = JMP; code[index].l = 0; code[index].a = 7; index++;
         code[index].f = OPR; code[index].l = 0; code[index].a = 0; index++;
+
     instruction i;
     {
 
@@ -134,29 +139,29 @@ int main() {
                             p = s[ t + 3 ];
                             b = s[ t + 2 ];
                             break;
-                        // Negativo
+                        // Negative
                         case 1:
 
                             s[ t ] = -s[ t ];
                             break;
-                        // Soma
+                        // Sum
                         case 2:
 
                             t = t - 1;
                             s[ t ] = s[ t ] + s[t + 1];
                             break;
-                        // Subtração
+                        // Sub
                         case 3:
                             t = t - 1;
                             s[ t ] = s[ t ] - s[t + 1];
                             break;
-                        // Multiplicação
+                        // Mult
                         case 4:
 
                             t = t - 1;
                             s[ t ] = s[ t ] * s[ t + 1 ];
                             break;
-                        // Divisão
+                        // Div
                         case 5:
 
                             t = t - 1;
@@ -167,7 +172,7 @@ int main() {
 
                             s[ t ] = ( s[ t ] ) % 2;
                             break;
-                        // Impar
+                        // pair
                         case 7:
 
                             s[ t ] = ( s[ t ] % 2 == 1 );
@@ -184,29 +189,29 @@ int main() {
                             t = t - 1;
                             s[ t ] = ( s[ t ] != s[ t + 1 ]);
                             break;
-                        // Menor que
+                        // kess than
                         case 10:
 
                             t = t - 1;
                             s[ t ] = ( s[ t ] < s[ t + 1 ] );
                             break;
-                        // Menor ou igual
+                        // kess or equal
                         case 11:
 
                             t = t - 1;
-                            s[ t ] = ( s[ t ] >= s[ t + 1 ] );
+                            s[ t ] = ( s[ t ] <= s[ t + 1 ] );
                             break;
-                        // Maior que
+                        // Bigger then
                         case 12:
 
                             t = t - 1;
                             s[  t] = ( s[ t ] > s[ t + 1 ] );
                             break;
-                        // Maior ou igual
+                        // Bigger or equal
                         case 13:
 
                             t = t - 1;
-                            s[ t ] = ( s[ t ] <= s[ t + 1 ] );
+                            s[ t ] = ( s[ t ] >= s[ t + 1 ] );
                             break;
 
                     }
