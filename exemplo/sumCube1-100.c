@@ -57,7 +57,7 @@ int main() {
     LIT 0 100(max interaction)
     STO 0 4 (move max intection)
     LIT 0 1 (inicial summation)
-    STO 0 5 (move summaton)
+    STO 0 5 (move summation)
     LOD 0 3 (load contactor x)
     LOD 0 3 (load contactor x*x)
     LOD 0 3 (load contactor x*x*x)
