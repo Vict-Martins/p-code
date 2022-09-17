@@ -47,65 +47,66 @@ int base( int l ) {
 
 }
 
-void main() {
+int main() {
 
     /* simplified entry( representation )
-    -MAIN
-    INT 0 5
-    LIT 0 4
-    STO 0 5 + 4
-    CAL 0 6
-    OPR 0 0
-    -FACTORIAL
-    INT 0 6
-    LIT 0 1
-    STO 0 3
-    LIT 0 1
-    STO 0 5
-    LOD 0 3
-    LOD 0 5
-    OPR 0 4
-    STO 0 5
-    LOD 0 3
-    LOD 0 4
-    OPR 0 10
-    JPC 0 23
-    LOD 0 3
-    OPR 0 2
-    STO 0 3
-    JMP 0 11
-    OPR 0 0
+    
+    MAXIMUM = 5
+    **MAIN**
+    INT 0 5 (space)
+    LIT 0 MAXIMUM (maximum intection)
+    STO 0 MAXIMUM + 4 (move parameter)
+    CAL 0 6 (call function)
+    LOD 0 10 (load result)
+    OPR 0 0 (fim execution)
+    
+    **FACTORIAL**
+    INT 0 6 (space)
+    LIT 0 1 (counter)
+    STO 0 3 (move counter)
+    LIT 0 1 (result)
+    STO 0 5 (move result)
+    LOD 0 3 (load counter)
+    OPR 0 4 (mult)
+    LOD 0 3 (load result)
+    LOD 0 4 (load maximum)
+    OPR 0 10 (less than)
+    JPC 0 21 (jump condition)
+    LOD 0 3 (load counter)
+    OPR 0 2 (sum counter + one)
+    STO 0 3 (move sum counter + one)
+    JMP 0 11 (restart loop)
+    OPR 0 0 (return main)
+    
     */
 
-    int index = 0, maximum = 5;
-    // MAIN
-    code[index].f = INT; code[index].l = 0; code[index++].a = 5;
-    code[index].f = LIT; code[index].l = 0; code[index++].a = maximum;
-    code[index].f = STO; code[index].l = 0; code[index++].a = 9;
-    code[index].f = CAL; code[index].l = 0; code[index++].a = 6;
-    code[index].f = LOD; code[index].l = 0; code[index++].a = 10;
-    code[index].f = OPR; code[index].l = 0; code[index++].a = 0;
-
-    // FACTORIAL
-    code[index].f = INT; code[index].l = 0; code[index++].a = 6;
-    code[index].f = LIT; code[index].l = 0; code[index++].a = 1;
-    code[index].f = STO; code[index].l = 0; code[index++].a = 3;
-    code[index].f = LIT; code[index].l = 0; code[index++].a = 1;
-    code[index].f = STO; code[index].l = 0; code[index++].a = 5;
-    code[index].f = LOD; code[index].l = 0; code[index++].a = 3;
-    code[index].f = LOD; code[index].l = 0; code[index++].a = 5;
-    code[index].f = OPR; code[index].l = 0; code[index++].a = 4;
-    code[index].f = STO; code[index].l = 0; code[index++].a = 5;
-    code[index].f = LOD; code[index].l = 0; code[index++].a = 3;
-    code[index].f = LOD; code[index].l = 0; code[index++].a = 4;
-    code[index].f = OPR; code[index].l = 0; code[index++].a = 10;
-    code[index].f = JPC; code[index].l = 0; code[index++].a = 23;
-    code[index].f = LOD; code[index].l = 0; code[index++].a = 3;
-    code[index].f = OPR; code[index].l = 0; code[index++].a = 2;
-    code[index].f = STO; code[index].l = 0; code[index++].a = 3;
-    code[index].f = JMP; code[index].l = 0; code[index++].a = 11;
-    code[index].f = OPR; code[index].l = 0; code[index++].a = 0;
-
+        int index = 0, maximum = 5;
+        //Main
+        code[index].f = INT; code[index].l = 0; code[index].a = 5; index++;
+        code[index].f = LIT; code[index].l = 0; code[index].a = 5; index++;
+        code[index].f = STO; code[index].l = 0; code[index].a = maximum + 4; index++;
+        code[index].f = CAL; code[index].l = 0; code[index].a = 6; index++;
+        code[index].f = LOD; code[index].l = 0; code[index].a = 10; index++;
+        code[index].f = OPR; code[index].l = 0; code[index].a = 0; index++;
+        
+        //Factorial
+        code[index].f = INT; code[index].l = 0; code[index].a = 6; index++;
+        code[index].f = LIT; code[index].l = 0; code[index].a = 1; index++;
+        code[index].f = STO; code[index].l = 0; code[index].a = 3; index++;
+        code[index].f = LIT; code[index].l = 0; code[index].a = 1; index++;
+        code[index].f = STO; code[index].l = 0; code[index].a = 5; index++;
+        code[index].f = LOD; code[index].l = 0; code[index].a = 3; index++;
+        code[index].f = OPR; code[index].l = 0; code[index].a = 4; index++;
+        code[index].f = LOD; code[index].l = 0; code[index].a = 3; index++;
+        code[index].f = LOD; code[index].l = 0; code[index].a = 4; index++;
+        code[index].f = OPR; code[index].l = 0; code[index].a = 10; index++;
+        code[index].f = JPC; code[index].l = 0; code[index].a = 21; index++;
+        code[index].f = LOD; code[index].l = 0; code[index].a = 3; index++;
+        code[index].f = OPR; code[index].l = 0; code[index].a = 2; index++;
+        code[index].f = STO; code[index].l = 0; code[index].a = 3; index++;
+        code[index].f = JMP; code[index].l = 0; code[index].a = 11; index++;
+        code[index].f = OPR; code[index].l = 0; code[index].a = 0; index++;
+        
     instruction i;
     {
 
@@ -117,12 +118,13 @@ void main() {
         s[2] = 0;
         s[3] = 0;
 
-        printf( "\n | p | b | t | -> ---------------STACK------------------" );
+        printf("\n| p  | b  | t  |      0    1    2    3    4    5    6     7" );
+        printf("\n=============================================================" );
 
         do {
 
             i =  code[ p ];
-            printf( "\n | %d | %d | %d | -> ", p, b, t );
+            printf("\n| %2d | %2d | %2d | -> ", p, b, t );
             p = p + 1;
 
             switch ( i.f ) {
@@ -144,29 +146,29 @@ void main() {
                             p = s[ t + 3 ];
                             b = s[ t + 2 ];
                             break;
-                        // Negativo
+                        // Negative
                         case 1:
 
                             s[ t ] = -s[ t ];
                             break;
-                        // Soma
+                        // Sum
                         case 2:
 
                             t = t - 1;
                             s[ t ] = s[ t ] + s[t + 1];
                             break;
-                        // Subtração
+                        // Sub
                         case 3:
                             t = t - 1;
                             s[ t ] = s[ t ] - s[t + 1];
                             break;
-                        // Multiplicação
+                        // Mult
                         case 4:
 
                             t = t - 1;
                             s[ t ] = s[ t ] * s[ t + 1 ];
                             break;
-                        // Divisão
+                        // Div
                         case 5:
 
                             t = t - 1;
@@ -177,7 +179,7 @@ void main() {
 
                             s[ t ] = ( s[ t ] ) % 2;
                             break;
-                        // Impar
+                        // pair
                         case 7:
 
                             s[ t ] = ( s[ t ] % 2 == 1 );
@@ -194,29 +196,29 @@ void main() {
                             t = t - 1;
                             s[ t ] = ( s[ t ] != s[ t + 1 ]);
                             break;
-                        // Menor que
+                        // kess than
                         case 10:
 
                             t = t - 1;
                             s[ t ] = ( s[ t ] < s[ t + 1 ] );
                             break;
-                        // Menor ou igual
+                        // kess or equal
                         case 11:
 
                             t = t - 1;
-                            s[ t ] = ( s[ t ] >= s[ t + 1 ] );
+                            s[ t ] = ( s[ t ] <= s[ t + 1 ] );
                             break;
-                        // Maior que
+                        // Bigger then
                         case 12:
 
                             t = t - 1;
                             s[  t] = ( s[ t ] > s[ t + 1 ] );
                             break;
-                        // Maior ou igual
+                        // Bigger or equal
                         case 13:
 
                             t = t - 1;
-                            s[ t ] = ( s[ t ] <= s[ t + 1 ] );
+                            s[ t ] = ( s[ t ] >= s[ t + 1 ] );
                             break;
 
                     }
@@ -269,7 +271,7 @@ void main() {
             }
             for( int j = 1; j <= t; j++ ) {
 
-                printf( "[ %d ]", s[ j ] );
+                printf( "[ %1d ]", s[ j ] );
 
             }
 
