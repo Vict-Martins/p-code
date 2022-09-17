@@ -47,7 +47,7 @@ int base( int l ) {
 
 }
 
-void main() {
+int main() {
 
     /* simplified entry( representation )
     INT 0 6
@@ -58,98 +58,43 @@ void main() {
     LIT 0 1
     STO 0 5
     LOD 0 3
-    LOD 0 3
-    LOD 0 3
-    OPR 0 4
-    OPR 0 4
     LOD 0 5
     OPR 0 2
     STO 0 5
     LOD 0 3
     LOD 0 4
-    OPR 0 9
-    JPC 0 23
+    OPR 0 10
+    JPC 0 19
     LOD 0 3
     OPR 0 2
     STO 0 3
     JMP 0 7
     OPR 0 0
     */
+
     int index = 0;
-
-    code[index].f = INT;
-    code[index].l = 0;
-    code[index].a = 6; index++;
-    code[index].f = LIT;
-    code[index].l = 0;
-    code[index].a = 2; index++;
-    code[index].f = STO;
-    code[index].l = 0;
-    code[index].a = 3; index++;
-    code[index].f = LIT;
-    code[index].l = 0;
-    code[index].a = 100; index++;
-    code[index].f = STO;
-    code[index].l = 0;
-    code[index].a = 4; index++;
-    code[index].f = LIT;
-    code[index].l = 0;
-    code[index].a = 1; index++;
-    code[index].f = STO;
-    code[index].l = 0;
-    code[index].a = 5; index++;
-    code[index].f = LOD;
-    code[index].l = 0;
-    code[index].a = 3; index++;
-    code[index].f = LOD;
-    code[index].l = 0;
-    code[index].a = 3; index++;
-    code[index].f = LOD;
-    code[index].l = 0;
-    code[index].a = 3; index++;
-    code[index].f = OPR;
-    code[index].l = 0;
-    code[index].a = 4; index++;
-    code[index].f = OPR;
-    code[index].l = 0;
-    code[index].a = 4; index++;
-    code[index].f = LOD;
-    code[index].l = 0;
-    code[index].a = 5; index++;
-    code[index].f = OPR;
-    code[index].l = 0;
-    code[index].a = 2; index++;
-    code[index].f = STO;
-    code[index].l = 0;
-    code[index].a = 5; index++;
-    code[index].f = LOD;
-    code[index].l = 0;
-    code[index].a = 3; index++;
-    code[index].f = LOD;
-    code[index].l = 0;
-    code[index].a = 4; index++;
-    code[index].f = OPR;
-    code[index].l = 0;
-    code[index].a = 9; index++;
-    code[index].f = JPC;
-    code[index].l = 0;
-    code[index].a = 23; index++;
-    code[index].f = LOD;
-    code[index].l = 0;
-    code[index].a = 3; index++;
-    code[index].f = OPR;
-    code[index].l = 0;
-    code[index].a = 2; index++;
-    code[index].f = STO;
-    code[index].l = 0;
-    code[index].a = 3; index++;
-    code[index].f = JMP;
-    code[index].l = 0;
-    code[index].a = 7; index++;
-    code[index].f = OPR;
-    code[index].l = 0;
-    code[index].a = 0;
-
+        code[index].f = INT; code[index].l = 0; code[index].a = 6; index++;
+        code[index].f = LIT; code[index].l = 0; code[index].a = 2; index++;
+        code[index].f = STO; code[index].l = 0; code[index].a = 3; index++;
+        code[index].f = LIT; code[index].l = 0; code[index].a = 100; index++;
+        code[index].f = STO; code[index].l = 0; code[index].a = 4; index++;
+        code[index].f = LIT; code[index].l = 0; code[index].a = 1; index++;
+        code[index].f = STO; code[index].l = 0; code[index].a = 5; index++;
+        code[index].f = LOD; code[index].l = 0; code[index].a = 3; index++;
+        code[index].f = LOD; code[index].l = 0; code[index].a = 3; index++;
+        code[index].f = LOD; code[index].l = 0; code[index].a = 3; index++;
+        code[index].f = OPR; code[index].l = 0; code[index].a = 4; index++;
+        code[index].f = OPR; code[index].l = 0; code[index].a = 4; index++;
+        code[index].f = OPR; code[index].l = 0; code[index].a = 2; index++;
+        code[index].f = LOD; code[index].l = 0; code[index].a = 3; index++;
+        code[index].f = LOD; code[index].l = 0; code[index].a = 4; index++;
+        code[index].f = OPR; code[index].l = 0; code[index].a = 10; index++;
+        code[index].f = JPC; code[index].l = 0; code[index].a = 21; index++;
+        code[index].f = LOD; code[index].l = 0; code[index].a = 3; index++;
+        code[index].f = OPR; code[index].l = 0; code[index].a = 2; index++;
+        code[index].f = STO; code[index].l = 0; code[index].a = 3; index++;
+        code[index].f = JMP; code[index].l = 0; code[index].a = 7; index++;
+        code[index].f = OPR; code[index].l = 0; code[index].a = 0; index++;
     instruction i;
     {
 
@@ -161,12 +106,13 @@ void main() {
         s[2] = 0;
         s[3] = 0;
 
-        printf( "\n | p | b | t | -> ---------------STACK------------------" );
+        printf("\n| p  | b  | t  |      0    1    2    3    4    5    6     7" );
+        printf("\n=============================================================" );
 
         do {
 
             i =  code[ p ];
-            printf( "\n | %d | %d | %d | -> ", p, b, t );
+            printf("\n| %2d | %2d | %2d | -> ", p, b, t );
             p = p + 1;
 
             switch ( i.f ) {
@@ -199,18 +145,18 @@ void main() {
                             t = t - 1;
                             s[ t ] = s[ t ] + s[t + 1];
                             break;
-                        // SubtraÁ„o
+                        // Subtra√ß√£o
                         case 3:
                             t = t - 1;
                             s[ t ] = s[ t ] - s[t + 1];
                             break;
-                        // MultiplicaÁ„o
+                        // Multiplica√ß√£o
                         case 4:
 
                             t = t - 1;
                             s[ t ] = s[ t ] * s[ t + 1 ];
                             break;
-                        // Divis„o
+                        // Divis√£o
                         case 5:
 
                             t = t - 1;
@@ -313,7 +259,7 @@ void main() {
             }
             for( int j = 1; j <= t; j++ ) {
 
-                printf( "[ %d ]", s[ j ] );
+                printf( "[ %1d ]", s[ j ] );
 
             }
 
