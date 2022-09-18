@@ -49,54 +49,101 @@ int base( int l ) {
 
 int main() {
 
+int index = 0, fibonacci = 4;
+
     /* simplified entry( representation )
 
-    **MAIN**
-    INT 0 6
-    LIT 0 2
-    STO 0 3
-    LIT 0 100
-    STO 0 4
+    **main**
+    INT 0 3
+    LIT 0 fibonacci
+    STO 0 6
+    CAL 0 6
+    LOD 0 7
+    OPR 0 0
+
+    **fibonacci**
+    INT 0 7
+    LOD 0 3
     LIT 0 1
+    OPR 0 9
+    JPC 0 35
+    STO 0 4
+    LOD 0 3
+    LIT 0 2
+    OPR 0 9
+    JPC 0 35
+    STO 0 4
+    LOD 0 3
+    LIT 0 1
+    OPR 0 3
+    STO 0 10
+    CAL 0 6
+    LOD 0 11
     STO 0 5
     LOD 0 3
+    LIT 0 2
+    OPR 0 3
+    STO 0 10
+    CAL 0 6
+    LOD 0 11
+    STO 0 6
     LOD 0 5
+    LOD 0 6
     OPR 0 2
-    STO 0 5
-    LOD 0 3
-    LOD 0 4
-    OPR 0 10
-    JPC 0 19
-    LOD 0 3
-    OPR 0 2
-    STO 0 3
-    JMP 0 7
+    STO 0 4
+    OPR 0 0
+
+    **return**
+    LIT 0 1
+    STO 0 4
     OPR 0 0
 
     */
 
-    int index = 0;
+    //main
+    code[index].f = INT; code[index].l = 0; code[index].a = 3; index++;
+    code[index].f = LIT; code[index].l = 0; code[index].a = fibonacci; index++;
+    code[index].f = STO; code[index].l = 0; code[index].a = 6; index++;
+    code[index].f = CAL; code[index].l = 0; code[index].a = 6; index++;
+    code[index].f = LOD; code[index].l = 0; code[index].a = 7; index++;
+    code[index].f = OPR; code[index].l = 0; code[index].a = 0; index++;
 
-    code[index].f = INT; code[index].l = 0; code[index].a = 6; index++;
-    code[index].f = LIT; code[index].l = 0; code[index].a = 2; index++;
-    code[index].f = STO; code[index].l = 0; code[index].a = 3; index++;
-    code[index].f = LIT; code[index].l = 0; code[index].a = 100; index++;
-    code[index].f = STO; code[index].l = 0; code[index].a = 4; index++;
+    //fibonacci
+    code[index].f = INT; code[index].l = 0; code[index].a = 7; index++;
+    code[index].f = LOD; code[index].l = 0; code[index].a = 3; index++;
     code[index].f = LIT; code[index].l = 0; code[index].a = 1; index++;
+    code[index].f = OPR; code[index].l = 0; code[index].a = 9; index++;
+    code[index].f = JPC; code[index].l = 0; code[index].a = 35; index++;
+    code[index].f = STO; code[index].l = 0; code[index].a = 4; index++;
+    code[index].f = LOD; code[index].l = 0; code[index].a = 3; index++;
+    code[index].f = LIT; code[index].l = 0; code[index].a = 2; index++;
+    code[index].f = OPR; code[index].l = 0; code[index].a = 9; index++;
+    code[index].f = JPC; code[index].l = 0; code[index].a = 35; index++;
+    code[index].f = STO; code[index].l = 0; code[index].a = 4; index++;
+    code[index].f = LOD; code[index].l = 0; code[index].a = 3; index++;
+    code[index].f = LIT; code[index].l = 0; code[index].a = 1; index++;
+    code[index].f = OPR; code[index].l = 0; code[index].a = 3; index++;
+    code[index].f = STO; code[index].l = 0; code[index].a = 10; index++;
+    code[index].f = CAL; code[index].l = 0; code[index].a = 6; index++;
+    code[index].f = LOD; code[index].l = 0; code[index].a = 11; index++;
     code[index].f = STO; code[index].l = 0; code[index].a = 5; index++;
     code[index].f = LOD; code[index].l = 0; code[index].a = 3; index++;
+    code[index].f = LIT; code[index].l = 0; code[index].a = 2; index++;
+    code[index].f = OPR; code[index].l = 0; code[index].a = 3; index++;
+    code[index].f = STO; code[index].l = 0; code[index].a = 10; index++;
+    code[index].f = CAL; code[index].l = 0; code[index].a = 6; index++;
+    code[index].f = LOD; code[index].l = 0; code[index].a = 11; index++;
+    code[index].f = STO; code[index].l = 0; code[index].a = 6; index++;
     code[index].f = LOD; code[index].l = 0; code[index].a = 5; index++;
+    code[index].f = LOD; code[index].l = 0; code[index].a = 6; index++;
     code[index].f = OPR; code[index].l = 0; code[index].a = 2; index++;
-    code[index].f = STO; code[index].l = 0; code[index].a = 5; index++;
-    code[index].f = LOD; code[index].l = 0; code[index].a = 3; index++;
-    code[index].f = LOD; code[index].l = 0; code[index].a = 4; index++;
-    code[index].f = OPR; code[index].l = 0; code[index].a = 10; index++;
-    code[index].f = JPC; code[index].l = 0; code[index].a = 19; index++;
-    code[index].f = LOD; code[index].l = 0; code[index].a = 3; index++;
-    code[index].f = OPR; code[index].l = 0; code[index].a = 2; index++;
-    code[index].f = STO; code[index].l = 0; code[index].a = 3; index++;
-    code[index].f = JMP; code[index].l = 0; code[index].a = 7; index++;
-    code[index].f = OPR; code[index].l = 0;code[index].a = 0; index++;
+    code[index].f = STO; code[index].l = 0; code[index].a = 4; index++;
+    code[index].f = OPR; code[index].l = 0; code[index].a = 0; index++;
+
+    //return
+    code[index].f = LIT; code[index].l = 0; code[index].a = 1; index++;
+    code[index].f = STO; code[index].l = 0; code[index].a = 4; index++;
+    code[index].f = OPR; code[index].l = 0; code[index].a = 0; index++;
 
     instruction i;
     {
@@ -109,7 +156,7 @@ int main() {
         s[2] = 0;
         s[3] = 0;
 
-        printf("\n| p  | b  | t  |      0    1    2    3    4    5    6     7" );
+        printf("\n| p  | b  | t  |      0    1    2    3    4    5    6    7" );
         printf("\n=============================================================" );
 
         do {

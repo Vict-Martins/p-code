@@ -47,7 +47,7 @@ int base( int l ) {
 
 }
 
-void main() {
+int main() {
 
     instruction i;
     {
@@ -60,12 +60,13 @@ void main() {
         s[2] = 0;
         s[3] = 0;
 
-        printf( "\n | p | b | t | -> ---------------STACK------------------" );
+        printf("\n| p  | b  | t  |      0    1    2    3    4    5    6    7" );
+        printf("\n=============================================================" );
 
         do {
 
             i =  code[ p ];
-            printf( "\n | %d | %d | %d | -> ", p, b, t );
+            printf("\n| %2d | %2d | %2d | -> ", p, b, t );
             p = p + 1;
 
             switch ( i.f ) {
@@ -87,29 +88,29 @@ void main() {
                             p = s[ t + 3 ];
                             b = s[ t + 2 ];
                             break;
-                        // Negativo
+                        // Negative
                         case 1:
 
                             s[ t ] = -s[ t ];
                             break;
-                        // Soma
+                        // Sum
                         case 2:
 
                             t = t - 1;
                             s[ t ] = s[ t ] + s[t + 1];
                             break;
-                        // Subtração
+                        // Sub
                         case 3:
                             t = t - 1;
                             s[ t ] = s[ t ] - s[t + 1];
                             break;
-                        // Multiplicação
+                        // Mult
                         case 4:
 
                             t = t - 1;
                             s[ t ] = s[ t ] * s[ t + 1 ];
                             break;
-                        // Divisão
+                        // Div
                         case 5:
 
                             t = t - 1;
@@ -120,7 +121,7 @@ void main() {
 
                             s[ t ] = ( s[ t ] ) % 2;
                             break;
-                        // Impar
+                        // pair
                         case 7:
 
                             s[ t ] = ( s[ t ] % 2 == 1 );
@@ -137,29 +138,29 @@ void main() {
                             t = t - 1;
                             s[ t ] = ( s[ t ] != s[ t + 1 ]);
                             break;
-                        // Menor que
+                        // kess than
                         case 10:
 
                             t = t - 1;
                             s[ t ] = ( s[ t ] < s[ t + 1 ] );
                             break;
-                        // Menor ou igual
+                        // kess or equal
                         case 11:
 
                             t = t - 1;
-                            s[ t ] = ( s[ t ] >= s[ t + 1 ] );
+                            s[ t ] = ( s[ t ] <= s[ t + 1 ] );
                             break;
-                        // Maior que
+                        // Bigger then
                         case 12:
 
                             t = t - 1;
                             s[  t] = ( s[ t ] > s[ t + 1 ] );
                             break;
-                        // Maior ou igual
+                        // Bigger or equal
                         case 13:
 
                             t = t - 1;
-                            s[ t ] = ( s[ t ] <= s[ t + 1 ] );
+                            s[ t ] = ( s[ t ] >= s[ t + 1 ] );
                             break;
 
                     }
@@ -212,7 +213,7 @@ void main() {
             }
             for( int j = 1; j <= t; j++ ) {
 
-                printf( "[ %d ]", s[ j ] );
+                printf( "[ %1d ]", s[ j ] );
 
             }
 
